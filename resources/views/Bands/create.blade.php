@@ -30,19 +30,9 @@
 
             <div class="mb-4">
                 <label for="release_date" class="block mb-2 font-bold">Release Date:</label>
-                <input type="number" id="release_date" name="release_date" placeholder="Enter release year" min="1900"
-                    max="{{ date('Y') }}" required
+                <input type="number" id="release_date" name="release_date" placeholder="Enter release year"
+                    min="1900" max="{{ date('Y') }}" required
                     class="w-full px-4 py-2 bg-gray-900 text-white rounded-lg focus:outline-none focus:ring focus:ring-[#1ed760]">
-            </div>
-
-            <div class="mb-4">
-                <label class="block mb-2 font-bold">Select Albums:</label>
-                @foreach ($albums as $album)
-                    <div>
-                        <input type="checkbox" id="album_{{ $album->id }}" name="album[]" value="{{ $album->id }}">
-                        <label for="album_{{ $album->id }}">{{ $album->name }}</label><br> 
-                    </div>
-                @endforeach
             </div>
 
             <div class="flex justify-between">

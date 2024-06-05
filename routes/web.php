@@ -2,6 +2,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SongController;
+use App\Http\Controllers\BandController;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -36,3 +37,20 @@ Route::post('/songs', [SongController::class, 'store'])->name('songs.store');
 Route::put('/songs/{id}', [SongController::class, 'update'])->name('songs.update');
 
 Route::delete('/songs/{id}', [SongController::class, 'destroy'])->name('songs.destroy');
+
+//Bands
+
+Route::get('/Bands', [BandController::class, 'index'])->name('Bands.index');
+
+Route::get('/Bands/create', [BandController::class, 'create'])->name('Bands.create');
+
+Route::get('/Bands/{id}/edit', [BandController::class, 'edit'])->name('Bands.edit');
+
+Route::get('/Bands/{index}', [BandController::class, 'show'])->name('Bands.show', '[1-9]+');
+
+Route::post('/Bands', [BandController::class, 'store'])->name('Bands.store');
+
+Route::put('/Bands/{id}', [BandController::class, 'update'])->name('Bands.update');
+
+Route::delete('/Bands/{id}', [BandController::class, 'destroy'])->name('Bands.destroy');
+

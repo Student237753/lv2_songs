@@ -32,17 +32,6 @@
                     min="1900" max="{{ date('Y') }}" required
                     class="w-full px-4 py-2 bg-gray-900 text-white rounded-lg focus:outline-none focus:ring focus:ring-[#1ed760]">
             </div>
-
-            <div class="mb-4">
-    <label class="block mb-2 font-bold">Select Albums:</label>
-    @foreach ($albums as $album)
-        <div>
-            <input type="checkbox" id="album_{{ $album->id }}" name="album[]" value="{{ $album->id }}"
-                {{ $song->albums->contains($album->id) ? 'checked' : '' }}>
-            <label for="album_{{ $album->id }}">{{ $album->name }}</label><br> 
-        </div>
-    @endforeach
-</div>
             <div class="flex justify-between">
                 <a href="{{ route('songs.index') }}" class="btn bg-[#1ed760] hover:bg-[#14833b] rounded-lg py-2 px-4 font-bold">Back</a>
                 <button type="submit" class="btn bg-[#1ed760] hover:bg-[#14833b] rounded-lg py-2 px-4 font-bold">Update Song</button>

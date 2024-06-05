@@ -14,10 +14,10 @@ class CreateBandsTable extends Migration
     public function up()
     {
         Schema::create('bands', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name')->notNullable();
             $table->string('genre')->notNullable();
-            $table->integer('founded')->length(4);
+            $table->integer('founded')->length(4)->nullable();
             $table->string('active_till')->default('Heden');
             $table->timestamps();
         });

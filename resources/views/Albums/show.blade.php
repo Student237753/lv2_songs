@@ -18,18 +18,7 @@
             <p><strong>Song:</strong> {{ $song->title }}</p>
             <p><strong>Artist:</strong> {{ $song->singer }}</p>
             <p><strong>Release Date:</strong> {{ $song->release_date }}</p>
-            <p><strong>Album(s):</strong>
-                @if ($song->albums->isEmpty())
-                    None
-                @else
-                    @foreach ($song->albums as $album)
-                        {{ $album->name }}
-                        @if (!$loop->last)
-                            /
-                        @endif
-                    @endforeach
-                @endif
-            </p>
+            <p><strong>Release Date:</strong> {{ $album->name }}</p>
             <p><strong>Updated at:</strong> {{ $song->updated_at }}</p>
             <p><strong>Created at:</strong> {{ $song->created_at }}</p>
             <div class="mt-4 flex justify-center">
