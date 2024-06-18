@@ -1,3 +1,5 @@
+<!-- songs/index.blade.php -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +13,9 @@
         <h1 class="text-white font-bold text-xl">Songs</h1>
     </header>
     <main class="p-4 mt-16 pb-20">
-        <div class="mb-8">
-            <a href="{{ route('songs.create') }}" class="btn bg-[#1ed760] hover:bg-[#1ed760] rounded-lg py-2 px-4"><b>Create New Song</b></a>
+        <div class="mb-8 flex justify-between">
+            <a href="{{ route('songs.create') }}" class="btn bg-[#1ed760] hover:bg-[#14833b] rounded-lg py-2 px-4"><b>Create New Song</b></a>
+            <a href="{{ route('bands.index') }}" class="btn bg-[#1ed760] hover:bg-[#14833b] rounded-lg py-2 px-4"><b>Show All Bands</b></a>
         </div>
         <!-- Display success message -->
         @if(session('success'))
@@ -33,7 +36,7 @@
                             <td class="px-4 py-2"><a href="{{ route('songs.show', $song->id) }}" class="hover:text-[#1ed760] font-bold">{{ $song->title }}</a></td>
                             <td class="px-4 py-2">{{ $song->singer }}</td>
                             <td class="px-4 py-2">
-                                <a href="{{ route('songs.edit', $song->id) }}" class="btn bg-[#1ed760] hover:bg-[#1ed760] rounded-lg py-2 px-4 font-bold">Edit</a>
+                                <a href="{{ route('songs.edit', $song->id) }}" class="btn bg-[#1ed760] hover:bg-[#14833b] rounded-lg py-2 px-4 font-bold">Edit</a>
                                 <form action="{{ route('songs.destroy', $song->id) }}" method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
@@ -52,7 +55,6 @@
 
     <style>
         @media screen and (max-width: 450px) {
-            /* Voeg hier je aanpassingen toe voor schermen kleiner dan 451px */
             .btn {
                 display: block;
                 margin-bottom: 10px;

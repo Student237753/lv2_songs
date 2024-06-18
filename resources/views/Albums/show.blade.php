@@ -4,25 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $song->title }} - Song Details</title>
+    <title>{{ $album->name }} - Album Details</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-black text-white">
     <header class="bg-[#1ed760] p-4 text-center">
-        <h1 class="text-white font-bold text-xl">Song Details - {{ $song->title }}</h1>
+        <h1 class="text-white font-bold text-xl">Album Details - {{ $album->name }}</h1>
     </header>
     <main class="p-4 mt-16">
         <section class="p-4 border border-gray-500">
-            <p><strong>ID:</strong> {{ $song->id }}</p>
-            <p><strong>Song:</strong> {{ $song->title }}</p>
-            <p><strong>Artist:</strong> {{ $song->singer }}</p>
-            <p><strong>Release Date:</strong> {{ $song->release_date }}</p>
-            <p><strong>Release Date:</strong> {{ $album->name }}</p>
-            <p><strong>Updated at:</strong> {{ $song->updated_at }}</p>
-            <p><strong>Created at:</strong> {{ $song->created_at }}</p>
+            <p><strong>ID:</strong> {{ $album->id }}</p>
+            <p><strong>Album name:</strong> {{ $album->name }}</p>
+            <p><strong>Year:</strong> {{ $album->year }}</p>
+            <p><strong>Times Sold:</strong> {{ $album->times_sold }}</p>
+            <p><strong>Band:</strong> {{ $album->band->name }}</p>
+            <p><strong>Updated at:</strong> {{ $album->updated_at }}</p>
+            <p><strong>Created at:</strong> {{ $album->created_at }}</p>
+            <p><strong>Songs:</strong>
+                @if ($album->songs->isEmpty())
+                    <span>None</span>
+                @else
+                    <ul class="list-disc pl-5">
+                        @foreach ($album->songs as $song)
+                            <li>{{ $song->title }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+            </p>
             <div class="mt-4 flex justify-center">
-                <a href="{{ route('songs.index') }}" class="btn bg-[#1ed760] hover:bg-[#14833b] rounded-lg py-2 px-4 font-bold">Back</a>
+                <a href="{{ route('albums.index') }}" class="btn bg-[#1ed760] hover:bg-[#14833b] rounded-lg py-2 px-4 font-bold">Back</a>
             </div>
         </section>
     </main>

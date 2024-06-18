@@ -8,11 +8,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-black text-white">
+<body class="bg-black text-white flex flex-col min-h-screen">
     <header class="bg-[#1ed760] p-4 text-center">
         <h1 class="text-white font-bold">Editing Song - {{ $song->title }}</h1>
     </header>
-    <main class="p-4 mt-16">
+    <main class="p-4 mt-16 flex-grow">
         <form action="{{ route('songs.update', $song->id) }}" method="POST" class="max-w-md mx-auto">
             @csrf
             @method('PUT')
@@ -34,22 +34,22 @@
             </div>
 
             <div class="mb-4">
-    <label class="block mb-2 font-bold">Select Albums:</label>
-    @foreach ($albums as $album)
-        <div>
-            <input type="checkbox" id="album_{{ $album->id }}" name="album[]" value="{{ $album->id }}"
-                {{ $song->albums->contains($album->id) ? 'checked' : '' }}>
-            <label for="album_{{ $album->id }}">{{ $album->name }}</label><br> 
-        </div>
-    @endforeach
-</div>
+                <label class="block mb-2 font-bold">Select Albums:</label>
+                @foreach ($albums as $album)
+                    <div>
+                        <input type="checkbox" id="album_{{ $album->id }}" name="album[]" value="{{ $album->id }}"
+                            {{ $song->albums->contains($album->id) ? 'checked' : '' }}>
+                        <label for="album_{{ $album->id }}">{{ $album->name }}</label><br> 
+                    </div>
+                @endforeach
+            </div>
             <div class="flex justify-between">
                 <a href="{{ route('songs.index') }}" class="btn bg-[#1ed760] hover:bg-[#14833b] rounded-lg py-2 px-4 font-bold">Back</a>
                 <button type="submit" class="btn bg-[#1ed760] hover:bg-[#14833b] rounded-lg py-2 px-4 font-bold">Update Song</button>
             </div>
         </form>
     </main>
-    <footer class="bg-[#1ed760] text-white p-4 text-center fixed bottom-0 w-full font-bold">
+    <footer class="bg-[#1ed760] text-white p-4 text-center w-full font-bold mt-auto">
         &copy; 2024 Songs Website. All rights reserved.
     </footer>
 </body>

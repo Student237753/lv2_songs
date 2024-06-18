@@ -54,7 +54,7 @@
         </form>
     </main>
 
-    <footer class="bg-[#1ed760] text-white p-4 text-center fixed bottom-0 w-full font-bold ">
+    <footer class="bg-[#1ED760] text-white p-4 text-center w-full font-bold">
         &copy; 2024 Songs Website. All rights reserved.
     </footer>
 </body>

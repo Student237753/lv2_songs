@@ -15,7 +15,7 @@
     <main class="p-4 mt-16">
         <section class="p-4 border border-gray-500">
             <p><strong>ID:</strong> {{ $band->id }}</p>
-            <p><strong>Name:</strong> {{ $band->name }}</p>
+            <p><strong>Band name:</strong> {{ $band->name }}</p>
             <p><strong>Genre:</strong> {{ $band->genre }}</p>
             <p><strong>Founded:</strong> {{ $band->founded }}</p>
             <p><strong>Active Till:</strong> {{ $band->active_till }}</p>
@@ -23,17 +23,19 @@
                 @if ($band->albums->isEmpty())
                     None
                 @else
-                    <ul>
+                    <p class="list-disc pl-5">
                         @foreach ($band->albums as $album)
-                            <li>{{ $album->name }}</li>
+                            <li>
+                                <strong>{{ $album->name }}</strong> ({{ $album->year }})  
+                            </li>
                         @endforeach
-                    </ul>
+                    </p>
                 @endif
             </p>
             <p><strong>Updated at:</strong> {{ $band->updated_at }}</p>
             <p><strong>Created at:</strong> {{ $band->created_at }}</p>
             <div class="mt-4 flex justify-center">
-                <a href="{{ route('songs.index') }}" class="btn bg-[#1ed760] hover:bg-[#14833b] rounded-lg py-2 px-4 font-bold">Back</a>
+                <a href="{{ route('bands.index') }}" class="btn bg-[#1ed760] hover:bg-[#14833b] rounded-lg py-2 px-4 font-bold">Back</a>
             </div>
         </section>
     </main>

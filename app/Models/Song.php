@@ -9,10 +9,14 @@ class Song extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'singer'];
+    protected $fillable = [
+        'title',
+        'singer',
+        'release_date',
+    ];
 
     public function albums()
     {
-        return $this->belongsToMany(Album::class)->withTimestamps();
+        return $this->belongsToMany(Album::class);
     }
 }
